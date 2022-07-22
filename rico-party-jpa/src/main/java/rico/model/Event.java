@@ -40,7 +40,7 @@ public class Event {
 	@Column(length=5,nullable = false)
 	private String password;
 	@ManyToOne
-	@JoinColumn(name="id_createur",nullable = false)
+	@JoinColumn(name="id_createur")
 	private User createur;
 	@OneToMany(mappedBy = "event" )
 	
