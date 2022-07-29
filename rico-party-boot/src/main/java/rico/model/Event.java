@@ -76,7 +76,7 @@ public class Event {
 	
 	
 	@Embedded
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewEvent.class)
 	private Adresse adresse;
 	
 	

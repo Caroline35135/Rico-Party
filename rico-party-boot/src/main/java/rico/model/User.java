@@ -13,13 +13,13 @@ public class User extends Compte {
 	
 	
 	@OneToMany(mappedBy = "user")
-	@JsonView(Views.ViewUser.class)
+	@JsonView(Views.ViewUserDetail.class)
 	private List <Message> messages=new ArrayList();
 	@OneToMany(mappedBy = "user")
-	@JsonView(Views.ViewUser.class)
+	@JsonView(Views.ViewUserDetail.class)
 	private List<Participation> participations=new ArrayList();
 	@OneToMany(mappedBy = "createur")
-	@JsonView(Views.ViewUser.class)
+	@JsonView(Views.ViewUserDetail.class)
 	private List<Event> events=new ArrayList();
 	
 	

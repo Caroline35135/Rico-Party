@@ -33,5 +33,6 @@ public class Views {
 	public static class ViewUser extends ViewCompte {
 	}
 
-
+	public static class ViewUserDetail extends ViewUser {
+	}
 }

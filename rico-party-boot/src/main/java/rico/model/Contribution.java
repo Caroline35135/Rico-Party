@@ -34,11 +34,11 @@ public class Contribution {
 	
 	@ManyToOne
 	@JoinColumn(nullable=false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewContribution.class)
 	private Event event;
 	
 	@ManyToOne
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewContribution.class)
 	private Participation participation;
 	
 	@Version

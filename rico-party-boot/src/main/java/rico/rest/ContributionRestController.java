@@ -32,14 +32,14 @@ public class ContributionRestController {
 	private IContributionRepo contributionRepo;
 
 	@GetMapping("")
-	@JsonView(Views.ViewEvent.class)
+	@JsonView(Views.ViewContribution.class)
 	@ResponseBody
 	public List<Contribution> findAll() {
 		return contributionRepo.findAll();
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewEvent.class)
+	@JsonView(Views.ViewContribution.class)
 	public ResponseEntity<Contribution> findById(@PathVariable Integer id) {
 		Optional<Contribution> optContribution = contributionRepo.findById(id);
 
@@ -51,7 +51,7 @@ public class ContributionRestController {
 	}
 
 	@PostMapping("")
-	@JsonView(Views.ViewEvent.class)
+	@JsonView(Views.ViewContribution.class)
 	public ResponseEntity<Contribution> create(@RequestBody Contribution contribution) {
 		contribution = contributionRepo.save(contribution);
 
@@ -59,7 +59,7 @@ public class ContributionRestController {
 	}
 	
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewEvent.class)
+	@JsonView(Views.ViewContribution.class)
 	public ResponseEntity<Contribution> update(@RequestBody Contribution contribution, @PathVariable Long id) {
 		contribution = contributionRepo.save(contribution);
 
