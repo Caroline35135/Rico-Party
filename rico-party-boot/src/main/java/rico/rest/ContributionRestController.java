@@ -39,6 +39,7 @@ public class ContributionRestController {
 	}
 
 	@GetMapping("/{id}")
+	@JsonView(Views.ViewEvent.class)
 	public ResponseEntity<Contribution> findById(@PathVariable Integer id) {
 		Optional<Contribution> optContribution = contributionRepo.findById(id);
 
