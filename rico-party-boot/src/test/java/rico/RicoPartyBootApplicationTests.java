@@ -61,6 +61,9 @@ class RicoPartyBootApplicationTests {
 		
 		Contribution contrib1 = new Contribution(Categorie.Alcool,"du pinard");
 		Contribution contrib2 = new Contribution(Categorie.Sucre,"gateaux");
+		contrib1 = contributionRepo.save(contrib1);
+		contrib2 = contributionRepo.save(contrib2);
+		
 		
 		List<Contribution> contributions1 = new ArrayList();
 		contributions1.add(contrib1);
@@ -68,13 +71,16 @@ class RicoPartyBootApplicationTests {
 		
 		
 		Event event1 = new Event (LocalDate.parse("2022-07-22"), LocalTime.parse("21:00"), "Anniversaire Rico", "ça va être chouette", 100, 3,
-				1000.0, "ricoco", user1, contributions1, adresse1);
+				1000.0, "rico", user1, contributions1, adresse1);
 		
 		event1 = eventRepo.save(event1);
 		
 		
 		Message message1= new Message("salut",LocalDate.parse("2022-07-22") , LocalTime.parse("19:00"), user1, event1);
 		Message message2= new Message("ca va?",LocalDate.parse("2022-07-22") , LocalTime.parse("19:01"), user1, event1);
+		
+		message1 = messageRepo.save(message1);
+		message2 = messageRepo.save(message2);
 		
 		List<Message> conversation = new ArrayList();
 		conversation.add(message1);
@@ -83,6 +89,7 @@ class RicoPartyBootApplicationTests {
 		event1.setMessages(conversation);
 		
 		Participation participation1= new Participation(2, "avec un pote", user2, contributions1,event1);
+		participation1 = participationRepo.save(participation1);
 	}
 
 }
