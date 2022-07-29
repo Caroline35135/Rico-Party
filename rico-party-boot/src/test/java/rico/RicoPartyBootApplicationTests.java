@@ -17,17 +17,22 @@ import rico.model.Event;
 import rico.model.Message;
 import rico.model.Participation;
 import rico.model.User;
-import rico.repo.ICompteRepo;
+import rico.repo.IAdminRepo;
+
 import rico.repo.IContributionRepo;
 import rico.repo.IEventRepo;
 import rico.repo.IMessageRepo;
 import rico.repo.IParticipationRepo;
+import rico.repo.IUserRepo;
 
 @SpringBootTest
 class RicoPartyBootApplicationTests {
 	
 	@Autowired
-	private ICompteRepo compteRepo;
+	private IAdminRepo adminRepo;
+	
+	@Autowired
+	private IUserRepo userRepo;
 
 	@Autowired
 	private IContributionRepo contributionRepo;
@@ -48,9 +53,9 @@ class RicoPartyBootApplicationTests {
 		User user2 = new User("certain","cassandre","cassandre@certain","cassandre");
 		Admin admin1 = new Admin("sultan","eric","eric@sultan","eric");
 
-		user1 = compteRepo.save(user1);
-		user2 = compteRepo.save(user2);
-		admin1 = compteRepo.save(admin1);
+		user1 = userRepo.save(user1);
+		user2 = userRepo.save(user2);
+		admin1 = adminRepo.save(admin1);
 		
 		Adresse adresse1 = new Adresse("12","Avenue Victor Hugo","Montdidier","80500");
 		
