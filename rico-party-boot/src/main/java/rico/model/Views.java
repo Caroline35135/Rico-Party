@@ -13,6 +13,9 @@ public class Views {
 	public static class ViewEvent extends ViewCommon {
 	}
 	
+	public static class ViewEventDetail extends ViewEvent {
+	}
+	
 	public static class ViewMessage extends ViewCommon {
 	}
 	

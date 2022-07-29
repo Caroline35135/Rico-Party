@@ -9,7 +9,7 @@ import rico.model.Event;
 
 
 
-public interface IEventRepo extends JpaRepository<Event, Long>{
+public interface IEventRepo extends JpaRepository<Event, Integer>{
 
 
 }

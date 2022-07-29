@@ -5,7 +5,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -17,41 +16,72 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 @Entity
 public class Event {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Integer id;
+	
 	@Column(name="date_event",nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private LocalDate date;
+	
 	@Column(name="heure_event",nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private LocalTime heure;
+	
 	@Column(length=50,nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private String titre;
+	
 	@Column(columnDefinition = "Text")
+	@JsonView(Views.ViewCommon.class)
 	private String description;
+	
 	@Column(name="taille_Max",columnDefinition = "int default 50")
+	@JsonView(Views.ViewCommon.class)
 	private int tailleMax;
+	
 	@Column(name="accompagnant_Max",columnDefinition = "int default 0")
+	@JsonView(Views.ViewCommon.class)
 	private int accompagnantMax;
+	
 	@Column(columnDefinition = "double default 0")
+	@JsonView(Views.ViewCommon.class)
 	private double prix;
+	
 	@Column(length=5,nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private String password;
+	
+	
 	@ManyToOne
 	@JoinColumn(name="id_createur")
+	@JsonView(Views.ViewEvent.class)
 	private User createur;
-	@OneToMany(mappedBy = "event" )
 	
+	
+	@OneToMany(mappedBy = "event" )
+	@JsonView(Views.ViewEventDetail.class)
 	private List <Message> messages=new ArrayList();
+	
 	@OneToMany(mappedBy = "event")
+	@JsonView(Views.ViewEventDetail.class)
 	private List <Participation> participants=new ArrayList();
+	
+	
 	@Embedded
+	@JsonView(Views.ViewCommon.class)
 	private Adresse adresse;
 	
 	
 	@OneToMany(mappedBy = "event")
+	@JsonView(Views.ViewEventDetail.class)
 	private List <Contribution> demandes;
 	
 	
