@@ -11,26 +11,38 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Contribution {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Integer id;
+	
+	
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = "ENUM('Sucre', 'Sale', 'Alcool', 'Soft')")
+	@JsonView(Views.ViewCommon.class)
 	private Categorie categorie;
+	
+	
 	@Column(length=100,nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private String description;
 	
 	@ManyToOne
 	@JoinColumn(nullable=false)
+	@JsonView(Views.ViewCommon.class)
 	private Event event;
+	
 	@ManyToOne
+	@JsonView(Views.ViewCommon.class)
 	private Participation participation;
 	
-	
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	
 	public Contribution() {}

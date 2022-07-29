@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,18 +15,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 import rico.model.Contribution;
+import rico.model.Views;
 import rico.repo.IContributionRepo;
 
-@Controller
+@RestController
 @RequestMapping("/contribution")
 @CrossOrigin("*")
 public class ContributionRestController {
+	
 	@Autowired
 	private IContributionRepo contributionRepo;
 
 	@GetMapping("")
+	@JsonView(Views.ViewEvent.class)
 	@ResponseBody
 	public List<Contribution> findAll() {
 		return contributionRepo.findAll();
@@ -45,6 +50,7 @@ public class ContributionRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(Views.ViewEvent.class)
 	public ResponseEntity<Contribution> create(@RequestBody Contribution contribution) {
 		contribution = contributionRepo.save(contribution);
 
@@ -52,6 +58,7 @@ public class ContributionRestController {
 	}
 	
 	@PutMapping("/{id}")
+	@JsonView(Views.ViewEvent.class)
 	public ResponseEntity<Contribution> update(@RequestBody Contribution contribution, @PathVariable Long id) {
 		contribution = contributionRepo.save(contribution);
 
