@@ -34,13 +34,13 @@ public class Participation {
 	private String invites;
 	@ManyToOne
 	@JoinColumn(name="id_participant",nullable = false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewParticipation.class)
 
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="id_event",nullable = false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewParticipation.class)
 
 	private Event event;
 	
