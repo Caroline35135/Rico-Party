@@ -28,11 +28,11 @@ public class Event {
 	private Integer id;
 	
 	@Column(name="date_event",nullable = false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewEvent.class)
 	private LocalDate date;
 	
 	@Column(name="heure_event",nullable = false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewEvent.class)
 	private LocalTime heure;
 	
 	@Column(length=50,nullable = false)
@@ -40,23 +40,23 @@ public class Event {
 	private String titre;
 	
 	@Column(columnDefinition = "Text")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewEvent.class)
 	private String description;
 	
 	@Column(name="taille_Max",columnDefinition = "int default 50")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewEvent.class)
 	private int tailleMax;
 	
 	@Column(name="accompagnant_Max",columnDefinition = "int default 0")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewEvent.class)
 	private int accompagnantMax;
 	
 	@Column(columnDefinition = "double default 0")
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewEvent.class)
 	private double prix;
 	
 	@Column(length=5,nullable = false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewEvent.class)
 	private String password;
 	
 	

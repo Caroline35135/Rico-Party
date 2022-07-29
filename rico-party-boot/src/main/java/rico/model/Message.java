@@ -14,30 +14,32 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
-
-@NamedQueries({ 
-@NamedQuery( 
-name="Message.findContenuLike", 
-query="Select m from Message m where content like '%g%'") 
-}) 
 public class Message {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	private Integer id;
 	@Column(name="contenu",length = 150,nullable=false)
+	@JsonView(Views.ViewCommon.class)
 	private String content;
 	@Column(name="date_message",nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private LocalDate date;
 	@Column(name="heure_message",nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	private LocalTime heure;
 	@ManyToOne
 	@JoinColumn(name="id_user",nullable = false)
+	@JsonView(Views.ViewMessage.class)
 	private User user;
 	@ManyToOne
 	@JoinColumn(name="id_event",nullable = false)
+	@JsonView(Views.ViewMessage.class)
 	private Event event;
 	
 	

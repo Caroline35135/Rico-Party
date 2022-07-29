@@ -3,15 +3,21 @@ package rico.model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
 public class Adresse {
 	@Column(length = 10,nullable = false)
+	@JsonView(Views.ViewEvent.class)
 	private String numero;
 	@Column(length = 25,nullable = false)
+	@JsonView(Views.ViewEvent.class)
 	private String voie;
 	@Column(length = 30,nullable = false)
+	@JsonView(Views.ViewEvent.class)
 	private String ville;
 	@Column(length = 9,nullable = false)
+	@JsonView(Views.ViewEvent.class)
 	private String cp;
 	
 	
