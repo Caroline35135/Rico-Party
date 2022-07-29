@@ -9,7 +9,7 @@ import rico.model.Contribution;
 
 
 
-public interface IContributionRepo extends JpaRepository<Contribution, Long>{
+public interface IContributionRepo extends JpaRepository<Contribution, Integer>{
 	
 //	@Query("Select m from Contribution m where m.event.id=?1")
 //	List<Contribution> findAllByIdEvent(int idEvent);
