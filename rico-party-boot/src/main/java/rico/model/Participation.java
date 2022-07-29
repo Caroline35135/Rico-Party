@@ -13,26 +13,40 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 @Table(uniqueConstraints = @UniqueConstraint(columnNames = {"id_event","id_participant"}))
 public class Participation {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
+
 	private Integer id;
 	@Column(name="nb_personne",columnDefinition = "int default 1")
+	@JsonView(Views.ViewCommon.class)
+
 	private int nbPersonne;
 	@Column(name="accompagnants",columnDefinition = "VARCHAR(75)",nullable = false)
+	@JsonView(Views.ViewCommon.class)
+
 	private String invites;
 	@ManyToOne
 	@JoinColumn(name="id_participant",nullable = false)
+	@JsonView(Views.ViewCommon.class)
+
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="id_event",nullable = false)
+	@JsonView(Views.ViewCommon.class)
+
 	private Event event;
 	
 	@OneToMany(mappedBy = "participation")
+	@JsonView(Views.ViewParticipationDetail.class)
+
 	private List <Contribution> contributions;
 	
 	@Version

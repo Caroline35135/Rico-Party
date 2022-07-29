@@ -10,8 +10,7 @@ import rico.model.Participation;
 
 public interface IParticipationRepo extends JpaRepository<Participation, Integer>{
 	
-//	@Query("Select p from Participation p where p.event.id=?1")
-//	List<Participation> findAllByIdEvent(Integer idEvent);
-	
+	@Query("Select p from Participation p where p.event.id=?1")
+	List<Participation> findAllByIdEvent(Integer idEvent);
 
 }

@@ -21,6 +21,8 @@ public class Views {
 	
 	public static class ViewParticipation extends ViewCommon {
 	}
+	public static class ViewParticipationDetail extends ViewParticipation {
+	}
 	
 	public static class ViewCompte extends ViewCommon {
 	}

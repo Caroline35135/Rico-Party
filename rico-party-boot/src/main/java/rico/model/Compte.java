@@ -14,7 +14,6 @@ import javax.persistence.Version;
 import com.fasterxml.jackson.annotation.JsonView;
 
 
-
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('admin','user') default 'user'")
