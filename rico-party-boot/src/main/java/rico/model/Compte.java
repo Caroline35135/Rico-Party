@@ -13,7 +13,7 @@ import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import formation.eshop.model.Views;
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -41,6 +41,7 @@ public abstract class Compte {
 	
 	
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	
 	

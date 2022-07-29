@@ -58,7 +58,7 @@ public class AdminRestController {
 
 	@GetMapping("")
 	@JsonView(Views.ViewAdmin.class)
-	public List<Compte> findAll() {
+	public List<Admin> findAll() {
 
 		return adminRepo.findAll();
 	}
@@ -66,7 +66,7 @@ public class AdminRestController {
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewAdmin.class)
 	public Admin findById(@PathVariable("id") Integer id) {
-		Optional<Compte> optAdmin = adminRepo.findById(id);
+		Optional<Admin> optAdmin = adminRepo.findById(id);
 
 		if(optAdmin.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
