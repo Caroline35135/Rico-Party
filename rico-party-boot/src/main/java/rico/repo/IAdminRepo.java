@@ -8,7 +8,7 @@ import rico.model.Compte;
 
 public interface IAdminRepo extends JpaRepository<Compte, Integer>{
 	
-	@Query("SELECT c from Compte c where c.mail=?1 and c.password=?2")
-	Admin seConnecter(String mail, String password);
+//	@Query("SELECT c from Compte c where c.mail=?1 and c.password=?2")
+//	Admin seConnecter(String mail, String password);
 
 }
