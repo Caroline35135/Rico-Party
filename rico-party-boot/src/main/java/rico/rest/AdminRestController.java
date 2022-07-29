@@ -90,6 +90,9 @@ public class AdminRestController {
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewAdmin.class)
 	public Admin update(@RequestBody Admin admin, @PathVariable Integer id) {
+		if (id != admin.getId()|| !adminRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
 		admin = adminRepo.save(admin);
 
 		return admin;

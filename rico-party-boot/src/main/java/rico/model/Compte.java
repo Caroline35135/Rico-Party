@@ -31,16 +31,15 @@ public abstract class Compte {
 	@JsonView(Views.ViewCommon.class)
 	protected String prenom;
 	@Column(length=30,unique = true,nullable=false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewUser.class, Views.ViewAdmin.class})
 	protected String mail;
 	
 	@Column(length=125,nullable = false)
-	@JsonView(Views.ViewCommon.class)
+	@JsonView({Views.ViewUser.class, Views.ViewAdmin.class})
 	protected String password;
 	
 	
 	@Version
-	@JsonView(Views.ViewCommon.class)
 	private int version;
 	
 	

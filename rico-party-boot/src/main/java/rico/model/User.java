@@ -6,15 +6,20 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class User extends Compte {
 	
 	
 	@OneToMany(mappedBy = "user")
+	@JsonView(Views.ViewUser.class)
 	private List <Message> messages=new ArrayList();
 	@OneToMany(mappedBy = "user")
+	@JsonView(Views.ViewUser.class)
 	private List<Participation> participations=new ArrayList();
 	@OneToMany(mappedBy = "createur")
+	@JsonView(Views.ViewUser.class)
 	private List<Event> events=new ArrayList();
 	
 	
