@@ -11,6 +11,10 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import formation.eshop.model.Views;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('admin','user') default 'user'")
@@ -18,15 +22,21 @@ public abstract class Compte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewCommon.class)
 	protected Integer id;
 	
 	@Column(length=15,nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	protected String nom;
 	@Column(length=15,nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	protected String prenom;
 	@Column(length=30,unique = true,nullable=false)
+	@JsonView(Views.ViewCommon.class)
 	protected String mail;
+	
 	@Column(length=125,nullable = false)
+	@JsonView(Views.ViewCommon.class)
 	protected String password;
 	
 	

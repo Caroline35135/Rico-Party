@@ -16,8 +16,7 @@ public class User extends Compte {
 	private List<Participation> participations=new ArrayList();
 	@OneToMany(mappedBy = "createur")
 	private List<Event> events=new ArrayList();
-	@Version
-	private int version;
+	
 	
 	
 
@@ -58,14 +57,7 @@ public class User extends Compte {
 		this.events = events;
 	}
 
-	
-	public int getVersion() {
-		return version;
-	}
 
-	public void setVersion(int version) {
-		this.version = version;
-	}
 
 	@Override
 	public String toString() {
