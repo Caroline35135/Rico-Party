@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnexionHttpService } from '../connexion/connexion-http.service';
-import { Event, User } from '../model';
+import { Adresse, Event, User } from '../model';
 import { CreationEventHttpService } from './creation-event-http.service';
 
 @Component({
@@ -11,35 +11,24 @@ import { CreationEventHttpService } from './creation-event-http.service';
 export class CreationEventComponent implements OnInit {
 
   event:Event;
+  
   createur:User;
+
+  adresse:Adresse;
 
   constructor(private creationeventservice : CreationEventHttpService, private createurservice:ConnexionHttpService) { }
 
   ngOnInit(): void {
   }
 
-  affcreateur(): User {
-    return this.createur;
-  }
-
   add() {
     this.event = new Event();
-    this.event.createur = new User();
-    this.recupcreateur();
-  }
-
-  edit(id: number) {
-    this.creationeventservice.findById(id).subscribe(resp => {
-      this.event = resp;
-      if(!this.event.createur) {
-        this.event.createur = new User();
-      }
-    });   
-    this.recupcreateur();
+    this.adresse=new Adresse();
+    this.event.createur = this.recupcreateur();
   }
 
   save() {
-    this.creationeventservice.save(this.event);
+    this.creationeventservice.save(this.event, this.adresse);
     this.cancel();
   }
 
@@ -47,12 +36,8 @@ export class CreationEventComponent implements OnInit {
     this.event = null;
   }
 
-  recupcreateur() {
-/*     this.createurservice.findById(id).subscribe( 
-      resp => {
-        this.createur = resp;
-      } 
-    )*/
+  recupcreateur():User {
+    return this.createurservice.user;
   }
 
 }

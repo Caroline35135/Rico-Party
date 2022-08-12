@@ -1,1 +1,74 @@
-<p>creation-event works!</p>
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white display-6">Création d'un événement</div>
+    <hr>
+    <div>
+        <a class="btn btn-success btn-lg" (click)="add()"><i class="bi bi-plus-square"></i></a>
+    </div>
+    <hr>
+
+    <div class="card mt-3" *ngIf="event">
+        <div class="card-body">
+            <div class="form-group">
+                <label for="nom">Titre:</label>
+                <input type="text" class="form-control" id="titre" name="titre" [(ngModel)]="event.titre" />
+            </div>
+            <div class="form-group">
+                <label for="prenom">Date:</label>
+                <input type="date" class="form-control" id="date" name="date" [(ngModel)]="event.date" />
+            </div>
+            <div class="form-group">
+                <label for="prenom">Heure:</label>
+                <input type="time" class="form-control" id="heure" name="heure" [(ngModel)]="event.heure" />
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea rows="4" class="form-control" id="description" name="description" [(ngModel)]="event.description"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="taillemax">Nombre maximal de personnes:</label>
+                <input type="number" class="form-control" id="taillemax" name="taillemax" [(ngModel)]="event.tailleMax" />
+            </div>
+            <div class="form-group">
+                <label for="accompagnantmax">Nombre maximal d'accompagnants:</label>
+                <input type="number" class="form-control" id="accompagnantmax" name="accompagnantmax" [(ngModel)]="event.accompagnantMax" />
+            </div>
+            <div class="form-group">
+                <label for="accompagnantmax">Prix:</label>
+                <input type="number" class="form-control" id="prix" name="prix" [(ngModel)]="event.prix" />
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe:</label>
+                <input type="text" class="form-control" id="password" name="password" [(ngModel)]="event.password" />
+            </div>
+
+            <div class="form-group">
+                <label for="createur">Createur:</label>
+                <input type="text" class="form-control" id="createur" name="createur" disabled placeholder="{{event.createur.nom}} {{event.createur.prenom}}"/>
+                <p></p>
+            </div>
+
+            <div class="form-group">
+                <label for="adresse">Adresse:</label>
+                <p></p>
+            </div>
+            <div class="form-group">
+                <p></p>
+                <label for="numero">Numero:</label><input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="event.adresse.numero" />
+                <label for="voie">Voie:</label><input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="event.adresse.voie" />
+                <label for="cp">Code Postal:</label><input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="event.adresse.cp" />
+                <label for="adresse">Ville:</label><input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="event.adresse.ville" />
+            </div>
+        </div>
+    </div>
+
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
+                <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+            </div>
+        </div>
+
+
+</div>
+
+        

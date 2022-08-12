@@ -81,7 +81,7 @@ id: number;
 date: Date;
 heure: Date;
 titre: string;
-descrition: string;
+description: string;
 tailleMax: number;
 accompagnantMax: number;
 prix: number;
@@ -93,12 +93,12 @@ adresse: Adresse;
 demandes: Array<Contribution>;
 version: number;
 
-constructor(id?: number , date?: Date, heure?: Date, titre?: string, descrition?: string, tailleMax?: number, accompagnantMax?: number, prix?: number, password?: string, createur?: User, messages?: Array<Message>, participations?: Array<Participation>, adresse?: Adresse, demandes?: Array<Contribution>) {
+constructor(id?: number , date?: Date, heure?: Date, titre?: string, description?: string, tailleMax?: number, accompagnantMax?: number, prix?: number, password?: string, createur?: User, messages?: Array<Message>, participations?: Array<Participation>, adresse?: Adresse, demandes?: Array<Contribution>) {
   this.id = id;
   this.date = date;
   this.heure= heure;
   this.titre = titre;
-  this.descrition = descrition;
+  this.description = description;
   this.tailleMax = tailleMax;
   this.accompagnantMax = accompagnantMax;
   this.prix = prix;
