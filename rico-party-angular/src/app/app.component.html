@@ -1,0 +1,33 @@
+<ul class="nav nav-pills m-5">
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="bi bi-house"></i>Accueil</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/inscription']" routerLinkActive="active">S'inscrire</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active">Se connecter</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/accueil-event']" routerLinkActive="active">Accueil événement</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/accueil-user']" routerLinkActive="active">Accueil utilisateur</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/creation-event']" routerLinkActive="active">Créer mon événement</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/lien']" routerLinkActive="active">Entrer mon lien d'invitation</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/reponse']" routerLinkActive="active">Répondre à mon invitation</a>
+    </li>
+
+</ul>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
