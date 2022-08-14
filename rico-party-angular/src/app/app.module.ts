@@ -23,6 +23,8 @@ import { AccueilEventComponent } from './accueil-event/accueil-event.component';
 import { AccueilEventHttpService } from './accueil-event/accueil-event-http.service';
 import { ReponseComponent } from './reponse/reponse.component';
 import { ReponseHttpService } from './reponse/reponse-http.service';
+import { EventComponent } from './event/event.component';
+import { EventHttpService } from './event/event-http.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { ReponseHttpService } from './reponse/reponse-http.service';
     ContributionsComponent,
     LienComponent,
     AccueilEventComponent,
-    ReponseComponent
+    ReponseComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,7 @@ import { ReponseHttpService } from './reponse/reponse-http.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AccueilPrincipalHttpService,ConnexionHttpService,InscriptionHttpService,AccueilUserHttpService,CreationEventHttpService,ContributionsHttpService,LienHttpService,AccueilEventHttpService,ReponseHttpService],
+  providers: [AccueilPrincipalHttpService,ConnexionHttpService,InscriptionHttpService,AccueilUserHttpService,CreationEventHttpService,ContributionsHttpService,LienHttpService,AccueilEventHttpService,ReponseHttpService,EventHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

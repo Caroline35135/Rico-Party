@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConnexionHttpService } from '../connexion/connexion-http.service';
+import { EventHttpService } from '../event/event-http.service';
 import { Adresse, Event, User } from '../model';
 import { CreationEventHttpService } from './creation-event-http.service';
 
@@ -11,24 +12,21 @@ import { CreationEventHttpService } from './creation-event-http.service';
 export class CreationEventComponent implements OnInit {
 
   event:Event;
-  
   createur:User;
-
   adresse:Adresse;
 
-  constructor(private creationeventservice : CreationEventHttpService, private createurservice:ConnexionHttpService) { }
+  constructor(private creationeventservice : CreationEventHttpService, private eventservice: EventHttpService, private connexionservice:ConnexionHttpService) { }
 
   ngOnInit(): void {
   }
 
   add() {
     this.event = new Event();
-    this.adresse=new Adresse();
     this.event.createur = this.recupcreateur();
   }
 
   save() {
-    this.creationeventservice.save(this.event, this.adresse);
+    this.creationeventservice.save(this.event);
     this.cancel();
   }
 
@@ -37,7 +35,9 @@ export class CreationEventComponent implements OnInit {
   }
 
   recupcreateur():User {
-    return this.createurservice.user;
+    return this.connexionservice.user;
   }
+
+
 
 }

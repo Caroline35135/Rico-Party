@@ -3,8 +3,11 @@ package rico.rest;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +21,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import rico.model.Adresse;
+import rico.model.Contribution;
 import rico.model.Event;
 import rico.model.Views;
 import rico.repo.IEventRepo;
@@ -48,7 +53,7 @@ public class EventRestController {
 
 		return optEvent.get();
 	}
-
+	
 	@PostMapping("")
 	@JsonView(Views.ViewEvent.class)
 	public Event create(@RequestBody Event event) {
@@ -71,6 +76,31 @@ public class EventRestController {
 	public void deleteById(@PathVariable Integer id) {
 		eventRepo.deleteById(id);
 	}
+	
+	
+	@GetMapping("/adresse")
+	@JsonView(Views.ViewEvent.class) 
+	public List<Adresse> findAllAdresses () { 
+		return eventRepo.findAllAdresses();
+	}
+	 
+	@GetMapping("/{id}/adresse")
+	@JsonView(Views.ViewEvent.class)
+	public Adresse findAdresseByIdEvent(@PathVariable Integer id) {
+		Optional<Adresse> optAdresse = eventRepo.findAdresseByIdEvent(id);
+		return optAdresse.get();
+	}
+	
+	/*
+	 * @GetMapping("/contribution")
+	 *
+	 * @JsonView(Views.ViewEventDetail.class) public List<Contribution>
+	 * findContribsByIdEvent () { return eventRepo.findContribsByIdEvent(); }
+	 */
+	
+	
+
+
 	
 
 

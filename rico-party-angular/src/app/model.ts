@@ -41,14 +41,12 @@ export class User extends Compte {
 
 
 export class Adresse {
-  id : number;
   numero: string;
   voie: string;
-  cp: string;
   ville: string;
+  cp: string;
 
-  constructor(id?:number,numero?: string, voie?: string, cp?: string, ville?: string) {
-      this.id = id;
+  constructor(numero?: string, voie?: string, ville?: string,cp?: string) {
       this.numero=numero;
       this.voie =  voie;
       this.cp =  cp;
