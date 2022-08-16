@@ -1,4 +1,17 @@
-<ul class="nav nav-pills m-5">
+<header>
+<img id="logo" src="assets/logo.png" alt="logo"/>
+<span id="titre">Rico Party</span>
+
+<span id="btn" *ngIf='seConnecter'><button [routerLink]="['/connexion']">Se connecter</button></span>
+<span id="btn" *ngIf='creerCompte'><button [routerLink]="['/inscription']">Créer un compte</button></span>
+<span id="btn" *ngIf='deconnexion'><button [routerLink]="['/']">Déconnexion</button></span>
+<span id="btn" *ngIf='retour'><button (click)="goBack()">Retour</button></span>
+</header>
+
+<img id="buffetg" src="assets/buffetgauche.png" />
+<img id="buffetd" src="assets/buffetdroite.png" />
+
+<ul id="menubis" class="nav nav-pills m-5">
     <li class="nav-item">
         <a class="nav-link" [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><i class="bi bi-house"></i>Accueil</a>
     </li>
@@ -9,7 +22,7 @@
         <a class="nav-link" [routerLink]="['/connexion']" routerLinkActive="active">Se connecter</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/accueil-event']" routerLinkActive="active">Accueil événement</a>
+        <a class="nav-link" [routerLink]="['/accueil-event/:id']" routerLinkActive="active">Accueil événement</a>
     </li>
     <li class="nav-item">
         <a class="nav-link" [routerLink]="['/accueil-user']" routerLinkActive="active">Accueil utilisateur</a>
@@ -28,6 +41,9 @@
 
 </ul>
 
+
+<main>
 <div class="container">
     <router-outlet></router-outlet>
 </div>
+</main>

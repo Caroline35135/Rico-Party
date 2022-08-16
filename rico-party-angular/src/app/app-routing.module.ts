@@ -11,8 +11,8 @@ import { LienComponent } from './lien/lien.component';
 import { ReponseComponent } from './reponse/reponse.component';
 
 const routes: Routes = [
-  {path:"", component: AccueilPrincipalComponent},
-  {path:"accueil-event", component: AccueilEventComponent},
+  {path:"", component: AccueilPrincipalComponent,pathMatch: 'full' },
+  {path:"accueil-event/:id", component: AccueilEventComponent},
   {path:"accueil-user", component: AccueilUserComponent},
   {path:"connexion", component: ConnexionComponent},
   {path:"contributions", component: ContributionsComponent},

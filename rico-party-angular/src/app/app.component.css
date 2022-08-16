@@ -1,0 +1,62 @@
+#logo {
+    width : 220px;
+    height : 150px; 
+    
+    }
+
+#btn {
+    float:right;
+    padding-top: 50px;
+   max-width: 970px;
+   height: 30px;
+   padding-right: 10px;
+   
+
+}
+
+#titre {
+    font-family:Brush Script MT, Brush Script Std, cursive;
+    font-weight: bold;
+    font-size: 50px;
+    
+}
+
+header{
+    background-color: lightseagreen;
+    width:100%;
+    top:0;
+    height: 150px;
+    position: fixed;
+    
+}
+
+main{
+    padding-left: 5cm;
+    padding-right: 5cm;
+    
+}
+
+#buffetg{
+    position: fixed;
+    padding-top: 102px;
+    height: 709px;
+    
+     
+}
+
+#buffetd{
+    
+    position: fixed;
+    padding-top: 102px;
+    height: 709px;
+    margin-left: 1410px;
+     
+}
+
+
+#menubis{
+    padding-top: 150px;
+    padding-left: 4cm;
+}
+
+
