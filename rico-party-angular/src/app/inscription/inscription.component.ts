@@ -22,7 +22,7 @@ export class InscriptionComponent implements OnInit {
     })
   }
   inscri(){
-    this.http.post<any>()
+    
   }
 
 }
