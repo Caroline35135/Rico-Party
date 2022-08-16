@@ -38,7 +38,7 @@ import { EventHttpService } from './event/event-http.service';
     LienComponent,
     AccueilEventComponent,
     ReponseComponent,
-    EventComponent,
+    EventComponent
   ],
   imports: [
     BrowserModule,
