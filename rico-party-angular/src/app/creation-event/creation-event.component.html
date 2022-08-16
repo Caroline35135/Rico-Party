@@ -41,7 +41,7 @@
                 <input type="text" class="form-control" id="password" name="password" [(ngModel)]="event.password" />
             </div>
 
- <!--       <div class="form-group">
+            <div class="form-group">
                 <label for="createur">Createur:</label>
                 <input type="text" class="form-control" id="createur" name="createur" disabled placeholder="{{event.createur.nom}} {{event.createur.prenom}}"/>
                 <p></p>
@@ -57,13 +57,14 @@
                 <label for="voie">Voie:</label><input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="event.adresse.voie" />
                 <label for="cp">Code Postal:</label><input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="event.adresse.cp" />
                 <label for="adresse">Ville:</label><input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="event.adresse.ville" />
-            </div>
-        </div> -->
+            </div> 
+
+        </div>
     </div>
 
         <div class="card-footer">
             <div class="btn-group btn-group-lg float-right">
-                <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
+                <a class="btn btn-success" (click)="save()" [routerLink]="['/accueil_user']"><i class="bi bi-check-square-fill"></i></a>
                 <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
             </div>
         </div>

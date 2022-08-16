@@ -55,7 +55,7 @@ public class Event {
 	@JsonView(Views.ViewEvent.class)
 	private double prix;
 	
-	@Column(length=5,nullable = false)
+	@Column(length=15,nullable = false)
 	@JsonView(Views.ViewEvent.class)
 	private String password;
 	

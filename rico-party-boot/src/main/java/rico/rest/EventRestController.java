@@ -58,7 +58,6 @@ public class EventRestController {
 	@JsonView(Views.ViewEvent.class)
 	public Event create(@RequestBody Event event) {
 		event = eventRepo.save(event);
-
 		return event;
 	}
 
@@ -92,10 +91,11 @@ public class EventRestController {
 	}
 	
 	/*
-	 * @GetMapping("/contribution")
-	 *
-	 * @JsonView(Views.ViewEventDetail.class) public List<Contribution>
-	 * findContribsByIdEvent () { return eventRepo.findContribsByIdEvent(); }
+	 * @GetMapping("/{id}/contribution")
+	 * @JsonView(Views.ViewEventDetail.class) 
+	 * public List<Contribution>findContribsByIdEvent (@PathVariable Integer id) { 
+	 * 		return eventRepo.findContribsByIdEvent(id); 
+	 * }
 	 */
 	
 	

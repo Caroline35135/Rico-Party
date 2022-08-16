@@ -23,6 +23,7 @@ export class CreationEventComponent implements OnInit {
   add() {
     this.event = new Event();
     this.event.createur = this.recupcreateur();
+    this.event.adresse = new Adresse();
   }
 
   save() {
