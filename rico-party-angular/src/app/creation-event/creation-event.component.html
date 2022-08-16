@@ -1,10 +1,5 @@
 <div class="card mt-3">
-    <div class="card-header bg-primary text-white display-6">Création d'un événement</div>
-    <hr>
-    <div>
-        <a class="btn btn-success btn-lg" (click)="add()"><i class="bi bi-plus-square"></i></a>
-    </div>
-    <hr>
+    <div class="card-header bg-primary text-white display-6">Créer mon événement</div>
 
     <div class="card mt-3" *ngIf="event">
         <div class="card-body">
@@ -57,18 +52,37 @@
                 <label for="voie">Voie:</label><input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="event.adresse.voie" />
                 <label for="cp">Code Postal:</label><input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="event.adresse.cp" />
                 <label for="adresse">Ville:</label><input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="event.adresse.ville" />
+                <p></p>
             </div> 
 
-        </div>
-    </div>
 
-        <div class="card-footer">
-            <div class="btn-group btn-group-lg float-right">
-                <a class="btn btn-success" (click)="save()" [routerLink]="['/accueil_user']"><i class="bi bi-check-square-fill"></i></a>
-                <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+            <div>Demandes de contributions:</div>
+                <table>
+                <thead>
+                    <tr>
+                        <td colspan="2"><button (click)="addContrib()">Ajouter contribution</button></td>
+                    </tr>
+                    <tr>
+                        <td>Categorie</td>
+                        <td>Description</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let d of event.demandes">
+                        <td><input type="text" [(ngModel)]="d.categorie"/></td>
+                        <td><input type="text" [(ngModel)]="d.description"/></td>
+                    </tr>
+                </tbody>
+                </table>
             </div>
         </div>
 
+        <div class="card-footer">
+            <div class="btn-group btn-group-lg float-right">
+                <a class="btn btn-success" (click)="save()" [routerLink]="['/accueil-user']"><i class="bi bi-check-square-fill"></i></a>
+                <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+            </div>
+        </div>
 
 </div>
 

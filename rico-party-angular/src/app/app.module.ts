@@ -38,7 +38,7 @@ import { EventHttpService } from './event/event-http.service';
     LienComponent,
     AccueilEventComponent,
     ReponseComponent,
-    EventComponent
+    EventComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +47,7 @@ import { EventHttpService } from './event/event-http.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AccueilPrincipalHttpService,ConnexionHttpService,InscriptionHttpService,AccueilUserHttpService,CreationEventHttpService,ContributionsHttpService,LienHttpService,AccueilEventHttpService,ReponseHttpService,EventHttpService],
+  providers: [AccueilPrincipalHttpService,ConnexionHttpService,InscriptionHttpService,AccueilUserHttpService,CreationEventHttpService,LienHttpService,AccueilEventHttpService,ReponseHttpService,EventHttpService, ContributionsHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -46,7 +46,6 @@ public class ContributionRestController {
 		if (optContribution.isPresent()) {
 			return new ResponseEntity<Contribution>(optContribution.get(), HttpStatus.OK);
 		}
-
 		return new ResponseEntity<Contribution>(HttpStatus.NOT_FOUND);
 	}
 

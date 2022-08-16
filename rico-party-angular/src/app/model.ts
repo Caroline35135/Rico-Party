@@ -64,7 +64,7 @@ export class Contribution {
   categorie: Categorie;
   description: string;
   event: Event;
-  Participation: Participation;
+  participation: Participation;
   version: number;
 
   constructor(id?: number, categorie?: Categorie, description?: string) {

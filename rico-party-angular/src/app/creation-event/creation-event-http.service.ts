@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 import { AppGlobalService } from '../app-global.service';
-import { Adresse, Contribution, Event, Message, Participation} from '../model';
+import { Contribution, Event} from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,10 @@ export class CreationEventHttpService {
     this.apiPath = this.appGlobal.backEndUrl + "event/";
   }
 
+  findByIdEvent(id: number): Observable<Event> {
+    return this.http.get<Event>(this.apiPath + id);
+  }
+
   save(event: Event) {
 
     if(event.createur && !event.createur.id) {
@@ -24,12 +29,32 @@ export class CreationEventHttpService {
       event.adresse = null;
     }
 
+    if(event.demandes){
+      for(let c of event.demandes){
+        this.http.post<Contribution>(this.appGlobal.backEndUrl+ "contribution/", c.event.demandes).subscribe(resp=>{});
+      }
+    }
+
     this.http.post<Event>(this.apiPath, event).subscribe(
       resp=>{
+
+        if(event.demandes){
+          for(let c of event.demandes){
+            c.event.id = resp.id;
+            this.http.post<Contribution>(this.appGlobal.backEndUrl+ "contribution/", c).subscribe(resp=>{});
+          }
+        }
         this.router.navigate(["accueil-user/"])
       }
     );
   }
+
+
+
+
+
+
+
     
 
 

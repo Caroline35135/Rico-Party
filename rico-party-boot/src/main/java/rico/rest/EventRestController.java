@@ -25,6 +25,7 @@ import rico.model.Adresse;
 import rico.model.Contribution;
 import rico.model.Event;
 import rico.model.Views;
+import rico.repo.IContributionRepo;
 import rico.repo.IEventRepo;
 
 
@@ -35,6 +36,8 @@ public class EventRestController {
 
 	@Autowired
 	private IEventRepo eventRepo;
+	@Autowired
+	private IContributionRepo contributionRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewEvent.class)
@@ -53,7 +56,7 @@ public class EventRestController {
 
 		return optEvent.get();
 	}
-	
+
 	@PostMapping("")
 	@JsonView(Views.ViewEvent.class)
 	public Event create(@RequestBody Event event) {
@@ -75,35 +78,35 @@ public class EventRestController {
 	public void deleteById(@PathVariable Integer id) {
 		eventRepo.deleteById(id);
 	}
-	
-	
-	@GetMapping("/adresse")
-	@JsonView(Views.ViewEvent.class) 
-	public List<Adresse> findAllAdresses () { 
-		return eventRepo.findAllAdresses();
+
+
+	//	@GetMapping("/adresse")
+	//	@JsonView(Views.ViewEvent.class) 
+	//	public List<Adresse> findAllAdresses () { 
+	//		return eventRepo.findAllAdresses();
+	//	}
+	//	 
+	//	@GetMapping("/{id}/adresse")
+	//	@JsonView(Views.ViewEvent.class)
+	//	public Adresse findAdresseByIdEvent(@PathVariable Integer id) {
+	//		Optional<Adresse> optAdresse = eventRepo.findAdresseByIdEvent(id);
+	//		return optAdresse.get();
+	//	}
+
+
+
+	@GetMapping("/{id}/contributions")
+	@JsonView(Views.ViewContribution.class)
+	public List<Contribution> findAllContributionsByIdEvent(@PathVariable Integer id) {
+		return contributionRepo.findAllByIdEvent(id);
 	}
-	 
-	@GetMapping("/{id}/adresse")
-	@JsonView(Views.ViewEvent.class)
-	public Adresse findAdresseByIdEvent(@PathVariable Integer id) {
-		Optional<Adresse> optAdresse = eventRepo.findAdresseByIdEvent(id);
-		return optAdresse.get();
-	}
-	
-	/*
-	 * @GetMapping("/{id}/contribution")
-	 * @JsonView(Views.ViewEventDetail.class) 
-	 * public List<Contribution>findContribsByIdEvent (@PathVariable Integer id) { 
-	 * 		return eventRepo.findContribsByIdEvent(id); 
-	 * }
-	 */
-	
-	
 
 
-	
 
 
-	
+
+
+
+
 }
 
