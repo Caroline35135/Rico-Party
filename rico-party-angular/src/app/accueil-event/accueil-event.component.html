@@ -1,31 +1,27 @@
-<p>accueil-event works!</p>
 
-<span ><button [routerLink]="['/creation-event']">Modifier l'évenement</button></span>
-
-<span ><button [routerLink]="['/reponse']">Répondre à l'invitation</button></span>
-<span ><button [routerLink]="['/connexion']"  disabled="disabled">Consulter à la liste des participants</button></span>
-<span ><button  disabled="disabled">Quoi rammener?</button></span>
-<span ><button  disabled="disabled">Message</button></span>
+<span ><button id="btnModifierEvent" *ngIf="estCreateur" [routerLink]="['/creation-event',event.id]">Modifier l'évenement</button></span>
+<span ><button id="btnRepondreInvit" [routerLink]="['/reponse']">Répondre à l'invitation</button></span>
 
 
-
-
-
-
+    <span id="titre" >{{event.titre}}</span><br>
+    <span >{{event.date | date:"EEEE dd/MM/yyyy" }}</span>
+    <span > à {{event.heure }}</span><br>
     
+    <span id="adresse"> {{event.adresse.voie}} </span>
+    <span id="adresse"> {{event.adresse.numero}} </span><br>
+    <span id="adresse"> {{event.adresse.cp}} </span>
+    <span id="adresse"> {{event.adresse.ville}} </span><br>
+  
+    <span >{{event.description}}</span><br>
+    <span >Taille max: {{event.tailleMax}} personnes</span>
+    <span >Nombre d'accompagnants maximum: {{event.accompagnantMax}} personnes</span>
+    <span >Prix d'entrée: {{event.prix}} €/ personne</span>
+    
+    
+    <span ><button id="btnConsulterParti" [routerLink]="['/connexion']"  disabled="disabled">Consulter à la liste des participants</button></span>
+    <br><br><br><span ><button id="btnQuoiRammener" disabled="disabled">Quoi rammener?</button></span>
 
-<div >
-    <div >{{event.titre}}</div>
-    <div >{{event.description}}</div>
-    <div >{{event.date}}</div>
-    <div >{{event.heure}}</div>
-    <div >{{event.adresse.numero}}</div>
-    <div >{{event.adresse.voie}}</div>
-    <div >{{event.adresse.ville}}</div>
-    <div >{{event.adresse.cp}}</div>
-</div>
-
- 
+    <br><br><br><span ><button id="btnMessage" disabled="disabled">Message</button></span>
    
   
     

@@ -12,11 +12,13 @@ import { ReponseComponent } from './reponse/reponse.component';
 
 const routes: Routes = [
   {path:"", component: AccueilPrincipalComponent,pathMatch: 'full' },
+  {path:"accueil-event", component: AccueilEventComponent},
   {path:"accueil-event/:id", component: AccueilEventComponent},
   {path:"accueil-user", component: AccueilUserComponent},
   {path:"connexion", component: ConnexionComponent},
   {path:"contributions", component: ContributionsComponent},
   {path:"creation-event", component: CreationEventComponent},
+  {path:"creation-event/:id", component: CreationEventComponent},
   {path:"inscription", component: InscriptionComponent},
   {path:"lien", component: LienComponent},
   {path:"reponse", component: ReponseComponent},

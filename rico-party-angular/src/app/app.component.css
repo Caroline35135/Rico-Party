@@ -39,7 +39,7 @@ main{
 #buffetg{
     position: fixed;
     padding-top: 102px;
-    height: 709px;
+    height: 95%;
     
      
 }
@@ -47,9 +47,9 @@ main{
 #buffetd{
     
     position: fixed;
-    padding-top: 102px;
-    height: 709px;
-    margin-left: 1410px;
+    margin-top: 102px;
+    height: 84%;
+    margin-left: 89%;
      
 }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { Adresse, Event } from '../model';
+import { ConnexionHttpService } from '../connexion/connexion-http.service';
+import { Adresse, Event, User } from '../model';
 import { AccueilEventHttpService } from './accueil-event-http.service';
 
 @Component({
@@ -12,15 +13,21 @@ import { AccueilEventHttpService } from './accueil-event-http.service';
 export class AccueilEventComponent implements OnInit {
 
   event: Event;
+  createur:User;
+  estCreateur: boolean= true;
 
+  
   private routeSub: Subscription;
-  constructor(private accueilEventService: AccueilEventHttpService,private route: ActivatedRoute) {
+  constructor(private accueilEventService: AccueilEventHttpService,private route: ActivatedRoute , private connexionservice:ConnexionHttpService) {
   }
 
   ngOnInit()  {
     
   
     this.getEvent();
+   if(this.recupcreateur().id=this.createur.id){
+      this.estCreateur= true;
+   }
     
 
   }
@@ -37,8 +44,10 @@ export class AccueilEventComponent implements OnInit {
   
 
   }
-callBack(){
-  
+
+
+recupcreateur():User {
+  return this.connexionservice.user;
 }
 
 }
