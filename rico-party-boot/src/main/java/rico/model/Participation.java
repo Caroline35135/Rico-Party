@@ -22,40 +22,52 @@ public class Participation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@JsonView(Views.ViewCommon.class)
-
 	private Integer id;
+	
+	@Column(name="nom")
+	@JsonView(Views.ViewCommon.class)
+	private String nom;
+	
+	@Column(name="prenom")
+	@JsonView(Views.ViewCommon.class)
+	private String prenom;
+	
+	@Column(name="mail")
+	@JsonView(Views.ViewCommon.class)
+	private String mail;
+	
 	@Column(name="nb_personne",columnDefinition = "int default 1")
 	@JsonView(Views.ViewCommon.class)
-
 	private int nbPersonne;
+	
 	@Column(name="accompagnants",columnDefinition = "VARCHAR(75)",nullable = false)
 	@JsonView(Views.ViewCommon.class)
-
 	private String invites;
+	
 	@ManyToOne
 	@JoinColumn(name="id_participant",nullable = false)
 	@JsonView(Views.ViewParticipation.class)
-
 	private User user;
 	
 	@ManyToOne
 	@JoinColumn(name="id_event",nullable = false)
 	@JsonView(Views.ViewParticipation.class)
-
 	private Event event;
 	
 	@OneToMany(mappedBy = "participation")
 	@JsonView(Views.ViewParticipationDetail.class)
-
 	private List <Contribution> contributions;
 	
 	@Version
 	private int version;
 	
 	
-	public Participation(Integer id, int nbPersonne, String invites, User user, List<Contribution> contributions,
+	public Participation(Integer id, String nom, String prenom, String mail, int nbPersonne, String invites, User user, List<Contribution> contributions,
 			Event event) {
 		this.id = id;
+		this.nom=nom;
+		this.prenom=prenom;
+		this.mail=mail;
 		this.nbPersonne = nbPersonne;
 		this.invites = invites;
 		this.user = user;
@@ -64,7 +76,6 @@ public class Participation {
 	}
 
 	public Participation() {
-		
 		
 	}
 	
@@ -140,12 +151,42 @@ public class Participation {
 	public void setVersion(int version) {
 		this.version = version;
 	}
+	
+	
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
 
 	@Override
 	public String toString() {
-		return "Participation [id=" + id + ", nbPersonne=" + nbPersonne + ", invites=" + invites + ", user=" + user
-				+ "]";
+		return "Participation [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", nbPersonne="
+				+ nbPersonne + ", invites=" + invites + ", user=" + user + ", event=" + event + ", contributions="
+				+ contributions + ", version=" + version + "]";
 	}
 	
+	
+
+
 
 }

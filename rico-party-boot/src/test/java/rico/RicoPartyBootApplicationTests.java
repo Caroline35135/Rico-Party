@@ -92,7 +92,10 @@ class RicoPartyBootApplicationTests {
 		
 		event1.setMessages(conversation);
 		
-		Participation participation1= new Participation(2, "avec un pote", user2, contributions1,event1);
+		Participation participation1= new Participation(2,"avec un pote", user2, contributions1,event1);
+		participation1.setNom("sultan");
+		participation1.setPrenom("eric");
+		participation1.setMail("eric@sultan");
 		participation1 = participationRepo.save(participation1);
 	}
 
