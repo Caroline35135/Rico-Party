@@ -4,7 +4,7 @@
     width: 500px;
     padding: 40px;
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: hsla(205, 46%, 30%, 1);

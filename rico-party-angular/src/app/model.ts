@@ -5,6 +5,7 @@ export abstract class Compte {
   mail: string;
   password: string;
   version: number;
+  confirmPassword: string;
 
   constructor(id?: number, nom? : string, prenom?: string, mail?: string, password?: string, version?: number) {
       this.id = id;
@@ -26,9 +27,13 @@ export class Admin extends Compte {
 }
 
 export class User extends Compte {
+  saveUsers(user: any) {
+    throw new Error('Method not implemented.');
+  }
    messages: Array<Message>;
    participations: Array<Participation>;
    events: Array<Event>;
+  email: any;
  
 
   constructor(id?: number, nom? : string, prenom?: string, mail?: string, password?: string, events?: Array<Event> ) {
