@@ -8,38 +8,20 @@ import { InscriptionHttpService } from './inscription-http.service';
 })
 export class InscriptionComponent implements OnInit {
    
-  user:User;
- 
+  user:User=new User();
 
   constructor(private Inscriptionservice: InscriptionHttpService) {}
   ngOnInit(): void {}
- 
-  
-  // ngOnInit(): void {
-  //   this.inscriptionForm = this.formBuilder.group({
-  //     nom : [''],
-  //     email: [''],
-  //     password : ['']
-     
-  //   })
-  // }
-  public inscri(user: User) {
-    if((!user.mail)&&(user.nom && user.mail && user.password && user.password==user.confirmPassword))
-    return 
-      
-      "nom"== this.user.nom,
-      "mail"== this.user.mail,
-      "password"== this.user.password,
 
-    this.Inscriptionservice.saveUsers(user);
 
-    };
 
   saveUser() {
-    if(this.user.password==this.user.confirmPassword){
-      this.user.saveUsers(this.user)
+    if((this.user.nom && this.user.prenom && this.user.mail && this.user.password && this.user.password==this.user.confirmPassword)){
+      this.Inscriptionservice.saveUser(this.user)
       alert("compte créé")
     }
-    else{ alert("Ce compte existe déjà!")}
+    else{alert("Ce compte n'a pas pu être crée")}
   }    
+
+
 }
