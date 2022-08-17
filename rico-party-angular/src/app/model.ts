@@ -35,7 +35,6 @@ export class User extends Compte {
    messages: Array<Message>;
    participations: Array<Participation>;
    events: Array<Event>;
-  email: any;
  
 
   constructor(id?: number, nom? : string, prenom?: string, mail?: string, password?: string, events?: Array<Event> ) {

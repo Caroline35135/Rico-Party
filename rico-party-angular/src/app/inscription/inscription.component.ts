@@ -17,7 +17,7 @@ export class InscriptionComponent implements OnInit {
 
   saveUser() {
     if((this.user.nom && this.user.prenom && this.user.mail && this.user.password && this.user.password==this.user.confirmPassword)){
-      this.Inscriptionservice.saveUser(this.user)
+      this.Inscriptionservice.saveUsers(this.user)
       alert("compte créé")
     }
     else{alert("Ce compte n'a pas pu être crée")}

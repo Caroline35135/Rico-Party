@@ -20,10 +20,11 @@ export class InscriptionHttpService {
   }
   
    inscri(user: User): Observable<User> {
-        return this.http.post<User>(this.apiPath, user);
+        return  this.http.post<User>(this.apiPath, user);
   }
 
-  saveUser(user: User) {
+  saveUsers(user: User) {
+
     this.http.post<User>(this.apiPath, user).subscribe(
       resp=>{
         this.router.navigate(["connexion/"])

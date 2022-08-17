@@ -1,10 +1,12 @@
 package rico.model;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 //A FAIRE//
 
 @Entity
+@DiscriminatorValue("admin")
 public class Admin extends Compte {
 	
 

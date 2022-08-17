@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import rico.model.User;
 import rico.model.Views;
 import rico.repo.IUserRepo;
+import rico.rest.dto.ConnexionDTO;
 
 
 @RestController
@@ -73,7 +74,17 @@ public class UserRestController {
 		userRepo.deleteById(id);
 	}
 	
+	@PostMapping("/connexion")
+	@JsonView(Views.ViewUser.class)
+	public User connexion(@RequestBody ConnexionDTO connexionDTO) {
+		User user = userRepo.seConnecter(connexionDTO.getMail(), connexionDTO.getPassword());
+		
+		if(user == null) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
 
+		return user;
+	}
 
 	
 }
