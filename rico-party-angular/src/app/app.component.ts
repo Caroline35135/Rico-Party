@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, Event as NavigationEvent } from '@angular/router';
+import { ConnexionHttpService } from './connexion/connexion-http.service';
 
 @Component({
   selector: 'app-root',
@@ -19,10 +20,14 @@ export class AppComponent {
  
 
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private connexionservice:ConnexionHttpService) {}
 
   goBack(): void {
     window.history.back();
+  }
+
+  reinitUser(){
+    this.connexionservice.user=null;
   }
  
   ngOnInit() {
@@ -72,7 +77,10 @@ export class AppComponent {
       }  
     }
   });
+
+  
 }
+
 
 
 }

@@ -17,15 +17,18 @@ export class CreationEventComponent implements OnInit {
   event:Event;
   eventcree:boolean=false;
   lien:string;
-
-  
   idEvent: number;
 
   constructor(private creationeventservice : CreationEventHttpService, private eventservice: EventHttpService, private connexionservice:ConnexionHttpService,private router:Router, private http: HttpClient, private appGlobal: AppGlobalService) {
-    this.event = new Event();
-    this.event.createur = this.recupcreateur();
-    this.event.adresse = new Adresse();
-    this.event.demandes= new Array<Contribution>();
+    if(connexionservice.user){
+      this.event = new Event();
+      this.event.createur = this.recupcreateur();
+      this.event.adresse = new Adresse();
+      this.event.demandes= new Array<Contribution>();
+    }
+    else {
+      this.router.navigate(["connexion/"]);
+    }
   }
 
   ngOnInit(): void {
@@ -44,13 +47,12 @@ export class CreationEventComponent implements OnInit {
             this.http.post<Contribution>("http://localhost:8080/contribution/", c).subscribe(resp=>{});
           }
         }
-		  
         this.idEvent= resp.id;
         this.cancel();
-		  this.router.navigate(["creation-event/"]);
-    })
+        this.router.navigate(["creation-event/"]);
+    });
   }
-  
+
   cancel() {
     this.lien="http://localhost:4200/accueil-event/"+this.idEvent;
     this.eventcree=true;

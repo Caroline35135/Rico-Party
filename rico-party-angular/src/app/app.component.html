@@ -4,7 +4,7 @@
 
 <span id="btn" *ngIf='seConnecter'><button [routerLink]="['/connexion']">Se connecter</button></span>
 <span id="btn" *ngIf='creerCompte'><button [routerLink]="['/inscription']">Créer un compte</button></span>
-<span id="btn" *ngIf='deconnexion'><button [routerLink]="['/']">Déconnexion</button></span>
+<span id="btn" *ngIf='deconnexion'><button [routerLink]="['/']" (click)="reinitUser()">Déconnexion</button></span>
 <span id="btn" *ngIf='retour'><button (click)="goBack()">Retour</button></span>
 </header>
 
