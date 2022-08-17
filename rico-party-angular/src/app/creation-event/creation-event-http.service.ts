@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { AppGlobalService } from '../app-global.service';
 import { Contribution, Event} from '../model';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -21,32 +22,33 @@ export class CreationEventHttpService {
   }
 
   save(event: Event) {
-
     if(event.createur && !event.createur.id) {
       event.createur = null;
     }
     if(!event.adresse) {
       event.adresse = null;
     }
-
-    if(event.demandes){
-      for(let c of event.demandes){
-        this.http.post<Contribution>(this.appGlobal.backEndUrl+ "contribution/", c.event.demandes).subscribe(resp=>{});
-      }
-    }
-
     this.http.post<Event>(this.apiPath, event).subscribe(
       resp=>{
-
         if(event.demandes){
           for(let c of event.demandes){
             c.event.id = resp.id;
             this.http.post<Contribution>(this.appGlobal.backEndUrl+ "contribution/", c).subscribe(resp=>{});
           }
         }
-        this.router.navigate(["accueil-user/"])
+        this.router.navigate(["creation-event/"])
       }
     );
+  }
+
+  save2(event: Event): Observable<Event> {
+    if(event.createur && !event.createur.id) {
+      event.createur = null;
+    }
+    if(!event.adresse) {
+      event.adresse = null;
+    }
+    return this.http.post<Event>(this.apiPath, event);
   }
 
 

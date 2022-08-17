@@ -1,3 +1,5 @@
+import { MinValidator } from "@angular/forms";
+
 export abstract class Compte {
   id: number;
   nom: string;
@@ -141,6 +143,9 @@ export class Message {
 
 export class Participation{
   id: number;
+  nom:string;
+  prenom:string;
+  mail:string;
   nbPersonne: number;
   invites: string;
   user: User;
@@ -148,8 +153,11 @@ export class Participation{
   contributions: Array<Contribution>;
   version: number;
 
-  constructor(id?: number, nbPersonne?: number, invites?: string, user?: User, event?: Event, contributions?: Array<Contribution>){
+  constructor(id?: number, nom?:string, prenom?:string, mail?:string, nbPersonne?: number, invites?: string, user?: User, event?: Event, contributions?: Array<Contribution>){
       this.id = id;
+      this.nom=nom;
+      this.prenom=prenom;
+      this.mail=mail;
       this.nbPersonne = nbPersonne;
       this. invites = invites;
       this.user = user;
