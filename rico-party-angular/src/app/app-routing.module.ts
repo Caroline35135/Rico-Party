@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:"creation-event/:id", component: CreationEventComponent},
   {path:"inscription", component: InscriptionComponent},
   {path:"lien", component: LienComponent},
-  {path:"reponse", component: ReponseComponent},
+  {path:"reponse/:id", component: ReponseComponent},
 ];
 
 @NgModule({

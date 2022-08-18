@@ -147,18 +147,20 @@ export class Participation{
   mail:string;
   nbPersonne: number;
   invites: string;
+  jeParticipe: string;
   user: User;
   event: Event;
   contributions: Array<Contribution>;
   version: number;
 
-  constructor(id?: number, nom?:string, prenom?:string, mail?:string, nbPersonne?: number, invites?: string, user?: User, event?: Event, contributions?: Array<Contribution>){
+  constructor(id?: number, nom?:string, prenom?:string, mail?:string, nbPersonne?: number, invites?: string, jeParticipe?: string,  user?: User, event?: Event, contributions?: Array<Contribution>){
       this.id = id;
       this.nom=nom;
       this.prenom=prenom;
       this.mail=mail;
       this.nbPersonne = nbPersonne;
       this. invites = invites;
+      this.jeParticipe = jeParticipe;
       this.user = user;
       this.event = event;
       this.contributions= contributions;
