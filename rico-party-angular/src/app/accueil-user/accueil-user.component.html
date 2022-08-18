@@ -26,16 +26,23 @@
                     <td>{{e.createur?.nom}} {{e.createur?.prenom}}</td>
                     <td>{{e.adresse?.numero}} {{e.adresse?.voie}} {{e.adresse?.cp}} {{e.adresse?.ville}}</td>
                     <td>
+                        
                         <div class="btn-group btn-group-sm">
+        
                             <a class="btn btn-primary" (click)="edit(e.id)"><i
                                     class="bi bi-pencil-square"></i></a>
                             <a class="btn btn-danger" (click)="delete(e.id)"><i class="bi bi-trash"></i></a>
                         </div>
                     </td>
+                    <td><button [routerLink]="['/accueil-event', e.id]">Consulter</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
+</div>
+
+<div>
+    <button [routerLink]="['/creation-event']" routerLinkActive="active">Créer un nouvel event</button>
 </div>
 
 <div class="card mt-3" *ngIf="event">
