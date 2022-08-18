@@ -73,7 +73,7 @@ this.reponseService.save(this.participation)
 
 
   cancel(){
-
+    window.history.back();
 
   }
 
