@@ -1,18 +1,30 @@
 <span>{{event?.titre}}</span><br>
 
 <span>Je participe?</span>
+<div class="card-body">
+    <div class="form-group">
+        <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="participation.nom" />
+    </div>
+    <div class="form-group">
+        <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="participation.prenom" />
+    </div>
+    <div class="form-group">
+        <label for="email">Mail:</label> <input type="mail" class="form-control" id="mail" name="mail" [(ngModel)]="participation.mail" />
+    </div>
+</div>
+
 <span ><button (click)= "estOui()" id="Oui" >Oui</button></span>
 <span ><button (click)= "estNon()" id="Non" >Non</button></span>
 
 
 <div class="card mt-3" *ngIf="non">
-<button id="validerNon" >Valider</button>
+<button id="validerNon" (click)="save()">Valider</button>
 </div>
 
 
 <div class="card mt-3" *ngIf="oui">
    <h4>Nombre d'accompagnants</h4>
-    <select [(ngModel)]="participation.nbPersonne" required>
+    <select [(ngModel)]="participation.nbPersonne">
        <option *ngFor="let invites of listeDeroulante()" >{{invites}}</option>
     </select>
     <span>Le prix est de {{event.prix}} €/ personne</span>
@@ -22,7 +34,7 @@
 
 <div class="card-footer">
     <div class="btn-group btn-group-lg float-right">
-        <a class="btn btn-success" ><i class="bi bi-check-square-fill"></i></a>
+        <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
         <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
     </div>
 </div>

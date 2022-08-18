@@ -11,6 +11,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class ReponseComponent implements OnInit {
 
+ 
   event :Event;
   participation: Participation;
  liste: Array<number> = new Array<number>();
@@ -23,8 +24,12 @@ export class ReponseComponent implements OnInit {
 
   ngOnInit() {
     this.participation = new Participation();
+    this.participation.event = new Event();
+    this.participation.event.id = Number(this.route.snapshot.paramMap.get('id'));
+   
     this.getEvent();
     
+   
    
    
   }
@@ -56,18 +61,13 @@ listeDeroulante(){
 }
 
 
-save(participation: Participation) {
+save() {
+  if (this.participation.nbPersonne==null){
+    this.participation.jeParticipe= "non";
+  }
+  else{this.participation.jeParticipe= "oui";}
+this.reponseService.save(this.participation)
 
-    let max = 0;
-    for (let par of this.participations) {
-      if (par.id > max) {
-        max = par.id;
-      }
-    }
-
-    participation.id = ++max;
-
-    this.participations.push(participation);
   }
 
 
@@ -76,4 +76,6 @@ save(participation: Participation) {
 
 
   }
+
+
 }

@@ -1,6 +1,6 @@
 
-<span ><button id="btnModifierEvent" *ngIf="estCreateur" [routerLink]="['/creation-event',event.id]">Modifier l'évenement</button></span>
-<span ><button id="btnRepondreInvit" [routerLink]="['/reponse']">Répondre à l'invitation</button></span>
+
+<span ><button id="btnRepondreInvit" [routerLink]="['/reponse', event.id]">Répondre à l'invitation</button></span>
 
 
     <span id="titre" >{{event.titre}}</span><br>

@@ -36,11 +36,11 @@ public class Participation {
 	@JsonView(Views.ViewCommon.class)
 	private String mail;
 	
-	@Column(name="nb_personne",columnDefinition = "int default 1")
+	@Column(name="nb_personne")
 	@JsonView(Views.ViewCommon.class)
-	private int nbPersonne;
+	private Integer nbPersonne;
 	
-	@Column(name="accompagnants",columnDefinition = "VARCHAR(75)",nullable = false)
+	@Column(name="accompagnants",columnDefinition = "VARCHAR(75)")
 	@JsonView(Views.ViewCommon.class)
 	private String invites;
 	
@@ -49,7 +49,7 @@ public class Participation {
 	private String jeParticipe;
 	
 	@ManyToOne
-	@JoinColumn(name="id_participant",nullable = false)
+	@JoinColumn(name="id_participant")
 	@JsonView(Views.ViewParticipation.class)
 	private User user;
 	
@@ -66,7 +66,7 @@ public class Participation {
 	private int version;
 	
 	
-	public Participation(Integer id, String nom, String prenom, String mail, int nbPersonne, String invites, String jeParticipe, User user, List<Contribution> contributions,
+	public Participation(Integer id, String nom, String prenom, String mail, Integer nbPersonne, String invites, String jeParticipe, User user, List<Contribution> contributions,
 			Event event) {
 		this.id = id;
 		this.nom=nom;
@@ -107,7 +107,7 @@ public class Participation {
 	}
 
 
-	public void setNbPersonne(int nbPersonne) {
+	public void setNbPersonne(Integer nbPersonne) {
 		this.nbPersonne = nbPersonne;
 	}
 
