@@ -15,13 +15,14 @@ export class LienHttpService {
     this.apiPath = this.appGlobal.backEndUrl + "participation/";
   }
 
-  save(participation: Participation) {
+  save() {
 
-    this.http.post<Participation>(this.apiPath, participation).subscribe(
+   /* this.http.post<Participation>(this.apiPath, participation).subscribe(
       resp=>{
         this.router.navigate(["accueil-event", participation.event.id])
       }
-    );
+    );*/
+    this.router.navigate(["accueil-event"]);
   }
     
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EventHttpService } from '../event/event-http.service';
 //import { ConnexionHttpService } from '../connexion/connexion-http.service';
 import { LienHttpService } from '../lien/lien-http.service';
 import {  Event, Participation, User } from '../model';
@@ -11,25 +12,34 @@ import {  Event, Participation, User } from '../model';
 })
 export class LienComponent implements OnInit {
 
- participation: Participation = new Participation();
+ //participation: Participation = new Participation();
+
+ event: Event;
+
+ password : string;
 
  createur:User;
+  //adresse:Adresse;
 
-  constructor(private lienservice : LienHttpService, private route: ActivatedRoute /*,  private connexionservice:ConnexionHttpService*/ ) { 
+  constructor(private eventService : EventHttpService, private route: ActivatedRoute, private router: Router ) { 
     this.route.params.subscribe(params => {
-      this.participation.event = new Event();
-      this.participation.event.id = params['id'];
-    })
+      let idEvent: number = params['id'];
+      eventService.findById(idEvent).subscribe(resp => {
+        this.event = resp;
+      });
+    });
   }
 
   ngOnInit(): void {
   }
 
-  save() {
-    this.lienservice.save(this.participation);
+  check() {
+    if(this.password == this.event.password) {
+      this.router.navigate(["accueil-event", this.event.id]);
+    }
   }
 
-  
+
 
 
 
