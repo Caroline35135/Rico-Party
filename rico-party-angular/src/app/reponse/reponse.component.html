@@ -1,1 +1,29 @@
-<p>reponse works!</p>
+<span>{{event?.titre}}</span><br>
+
+<span>Je participe?</span>
+<span ><button (click)= "estOui()" id="Oui" >Oui</button></span>
+<span ><button (click)= "estNon()" id="Non" >Non</button></span>
+
+
+<div class="card mt-3" *ngIf="non">
+<button id="validerNon" >Valider</button>
+</div>
+
+
+<div class="card mt-3" *ngIf="oui">
+   <h4>Nombre d'accompagnants</h4>
+    <select [(ngModel)]="participation.nbPersonne" required>
+       <option *ngFor="let invites of listeDeroulante()" >{{invites}}</option>
+    </select>
+    <span>Le prix est de {{event.prix}} €/ personne</span>
+    <span *ngIf="participation.nbPersonne!= null">total = {{event.prix*participation.nbPersonne + event.prix}} €</span>
+<h4>Avec qui?</h4>
+<input [(ngModel)]="participation.invites" type="text">
+
+<div class="card-footer">
+    <div class="btn-group btn-group-lg float-right">
+        <a class="btn btn-success" ><i class="bi bi-check-square-fill"></i></a>
+        <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+    </div>
+</div>
+</div>
