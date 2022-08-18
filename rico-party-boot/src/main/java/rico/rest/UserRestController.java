@@ -18,9 +18,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-
+import rico.model.Contribution;
+import rico.model.Event;
 import rico.model.User;
 import rico.model.Views;
+import rico.repo.IContributionRepo;
+import rico.repo.IEventRepo;
 import rico.repo.IUserRepo;
 import rico.rest.dto.ConnexionDTO;
 
@@ -32,6 +35,8 @@ public class UserRestController {
 
 	@Autowired
 	private IUserRepo userRepo;
+	@Autowired
+	private IEventRepo eventRepo;
 
 	@GetMapping("")
 	@JsonView(Views.ViewUser.class)
@@ -85,6 +90,15 @@ public class UserRestController {
 
 		return user;
 	}
+	
+	@GetMapping("/{id}/events")
+	@JsonView(Views.ViewEvent.class)
+	public List<Event> findAllEventsByIdCreateur(@PathVariable Integer id) {
+		return eventRepo.findAllByIdCreateur(id);
+	}
+
+
+
 
 	
 }

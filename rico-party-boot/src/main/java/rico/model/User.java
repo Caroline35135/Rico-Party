@@ -25,7 +25,6 @@ public class User extends Compte {
 	private List<Event> events=new ArrayList();
 	
 	
-	
 
 	public User() {
 		super();

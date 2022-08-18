@@ -1,1 +1,110 @@
-<p>accueil-user works!</p>
+<div class="card mt-3">
+
+    <div class="card-header bg-primary text-white display-6">Mes événements:</div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Description</th>
+                    <th>Créateur</th>
+                    <th>Adresse</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let e of listCreateurEvents()">
+                    <td>{{e.id}}</td>
+                    <td>{{e.titre}}</td>
+                    <td>{{e.date}}</td>
+                    <td>{{e.heure}}</td>
+                    <td>{{e.description}}</td>
+                    <td>{{e.createur?.nom}} {{e.createur?.prenom}}</td>
+                    <td>{{e.adresse?.numero}} {{e.adresse?.voie}} {{e.adresse?.cp}} {{e.adresse?.ville}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(e.id)"><i
+                                    class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="delete(e.id)"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card mt-3" *ngIf="event">
+    <div class="card-header bg-primary text-white display-6">Edition d'un événement:</div>
+    <div class="card-body">
+
+        <div class="form-group">
+            <label for="id">Identifiant:</label> <input type="text" class="form-control" id="id" name="id" [(ngModel)]="event.id" />
+        </div>
+
+        <div class="form-group">
+            <label for="titre">Titre:</label> <input type="text" class="form-control" id="titre" name="titre" [(ngModel)]="event.titre" />
+        </div>
+
+        <div class="form-group">
+            <label for="date">Date:</label> <input type="date" class="form-control" id="prenom" name="prenom" [(ngModel)]="event.date" />
+        </div>
+
+        <div class="form-group">
+            <label for="heure">Heure:</label> <input type="time" class="form-control" id="heure" name="heure" [(ngModel)]="event.heure" />
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label> <textarea rows="4" class="form-control" id="description" name="description" [(ngModel)]="event.description"></textarea>
+            <p></p>
+        </div>
+
+        <div class="form-group">
+            <label for="adresse">Adresse:</label>
+            <p></p>
+            <label for="numero">N°:</label> <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="event.adresse.numero" />
+            <label for="voie">Voie:</label> <input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="event.adresse.voie" />    
+            <label for="ville">Ville:</label> <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="event.adresse.ville" />
+            <label for="cp">Code Postal:</label> <input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="event.adresse.cp" />
+        </div>
+
+        <div class="form-group">
+                <label for="createur">Createur:</label>
+                <input type="text" class="form-control" id="createur" name="createur" disabled placeholder="{{event.createur.nom}} {{event.createur.prenom}}"/>
+                <p></p>
+        </div>
+
+        <div>Demandes de contributions:</div>
+        <table>
+        <thead>
+            <tr>
+                <td colspan="2"><button (click)="addContrib()">Ajouter contribution</button></td>
+            </tr>
+            <tr>
+                <td>Categorie</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let d of event.demandes">
+                <td><input type="text" [(ngModel)]="d.categorie"/></td>
+                <td><input type="text" [(ngModel)]="d.description"/></td>
+            </tr>
+        </tbody>
+        </table>
+        </div>
+
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+            <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill"></i></a>
+            <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+        </div>
+    </div>
+
+
+
+</div>

@@ -86,6 +86,7 @@ public class Event {
 	
 	
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	
 	

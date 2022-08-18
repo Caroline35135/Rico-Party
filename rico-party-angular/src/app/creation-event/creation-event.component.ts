@@ -43,6 +43,7 @@ export class CreationEventComponent implements OnInit {
     this.creationeventservice.save2(event).subscribe(resp=>{
         if(event.demandes){
           for(let c of event.demandes){
+            c.event = new Event();
             c.event.id = resp.id;
             this.http.post<Contribution>("http://localhost:8080/contribution/", c).subscribe(resp=>{});
           }

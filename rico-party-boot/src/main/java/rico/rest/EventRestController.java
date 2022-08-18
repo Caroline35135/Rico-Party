@@ -49,11 +49,19 @@ public class EventRestController {
 	@JsonView(Views.ViewEvent.class)
 	public Event findById(@PathVariable("id") Integer id) {
 		Optional<Event> optEvent = eventRepo.findById(id);
-
 		if (optEvent.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
-
+		return optEvent.get();
+	}
+	
+	@GetMapping("/{id}/detail")
+	@JsonView(Views.ViewEventDetail.class)
+	public Event findDetailById(@PathVariable Integer id) {
+		Optional<Event> optEvent = eventRepo.findByIdWithContribs(id);
+		if (optEvent.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
 		return optEvent.get();
 	}
 
@@ -73,6 +81,25 @@ public class EventRestController {
 		event = eventRepo.save(event);
 		return event;
 	}
+	
+	@PostMapping("/detail")
+	@JsonView(Views.ViewEventDetail.class)
+	public Event createDetail(@RequestBody Event event) {
+		event = eventRepo.save(event);
+		return event;
+	}
+
+	@PutMapping("/{id}/detail")
+	@JsonView(Views.ViewEventDetail.class)
+	public Event updateDetail(@RequestBody Event event, @PathVariable Integer id) {
+		if (id != event.getId()|| !eventRepo.existsById(id)) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+		event = eventRepo.save(event);
+		return event;
+	}
+	
+	
 
 	@DeleteMapping("/{id}")
 	public void deleteById(@PathVariable Integer id) {
@@ -92,14 +119,15 @@ public class EventRestController {
 	//		Optional<Adresse> optAdresse = eventRepo.findAdresseByIdEvent(id);
 	//		return optAdresse.get();
 	//	}
-
-
-
+	
 	@GetMapping("/{id}/contributions")
 	@JsonView(Views.ViewContribution.class)
-	public List<Contribution> findAllContributionsByIdEvent(@PathVariable Integer id) {
+	public List<Contribution> findAllContribsByIdEvent(@PathVariable Integer id) {
 		return contributionRepo.findAllByIdEvent(id);
 	}
+
+
+	
 
 
 
