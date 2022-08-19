@@ -67,6 +67,23 @@
 
         <div class="form-group">
             <label for="description">Description:</label> <textarea rows="4" class="form-control" id="description" name="description" [(ngModel)]="event.description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="taillemax">Nombre maximal de personnes:</label>
+            <input type="number" class="form-control" id="taillemax" name="taillemax" [(ngModel)]="event.tailleMax" />
+        </div>
+        <div class="form-group">
+            <label for="accompagnantmax">Nombre maximal d'accompagnants:</label>
+            <input type="number" class="form-control" id="accompagnantmax" name="accompagnantmax" [(ngModel)]="event.accompagnantMax" />
+        </div>
+        <div class="form-group">
+            <label for="accompagnantmax">Prix:</label>
+            <input type="number" class="form-control" id="prix" name="prix" [(ngModel)]="event.prix" />
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe:</label>
+            <input type="text" class="form-control" id="password" name="password" [(ngModel)]="event.password" />
             <p></p>
         </div>
 
